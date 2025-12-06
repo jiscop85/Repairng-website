@@ -32,3 +32,45 @@ const Contact = () => {
             همین حالا با ما تماس بگیرید و مشاوره رایگان دریافت کنید
           </p>
         </div>
+
+ <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Contact Info */}
+          <div className="space-y-8 animate-fade-in">
+            <div className="flex items-start gap-4 p-6 bg-card rounded-xl shadow-card border border-border/50 hover:border-primary/50 transition-smooth">
+              <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center flex-shrink-0">
+                <Phone className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-card-foreground">شماره تماس</h3>
+                <a
+                  href="tel:09122448523"
+                  className="text-lg text-muted-foreground hover:text-primary transition-smooth block mb-1"
+                  dir="ltr"
+                >
+                  09122448523
+                </a>
+                <a
+                  href="tel:09912326046"
+                  className="text-lg text-muted-foreground hover:text-primary transition-smooth block"
+                  dir="ltr"
+                >
+                  09912326046
+                </a>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4 p-6 bg-card rounded-xl shadow-card border border-border/50 hover:border-primary/50 transition-smooth">
+              <div className="w-12 h-12 rounded-lg gradient-primary flex items-center justify-center flex-shrink-0">
+                <Mail className="w-6 h-6 text-white" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold mb-2 text-card-foreground">ایمیل</h3>
+                <a
+                  href="mailto:info@nemagostar.com"
+                  className="text-lg text-muted-foreground hover:text-primary transition-smooth"
+                  dir="ltr"
+                >
+                  info@nemagostar.com
+                </a>
+              </div>
+            </div>
