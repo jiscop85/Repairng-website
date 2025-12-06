@@ -41,3 +41,57 @@ const services = [
     slug: "prefab-villa",
   },
 ];
+
+const Services = () => {
+  const navigate = useNavigate();
+
+  return (
+    <section id="services" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-primary bg-clip-text text-transparent">
+            خدمات ما
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            نماگستر با بیش از ۱۰ سال تجربه، آماده ارائه بهترین خدمات در حوزه ساخت و ساز است
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              className="group hover:shadow-elegant transition-smooth border-border/50 hover:border-primary/50 animate-fade-in cursor-pointer"
+              style={{ animationDelay: `${index * 100}ms` }}
+              onClick={() => navigate(`/services/${service.slug}`)}
+            >
+              <CardContent className="p-6">
+                <div className="w-16 h-16 rounded-lg gradient-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-smooth">
+                  <service.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold mb-3 text-card-foreground">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  {service.description}
+                </p>
+                <Button
+                  className="w-full"
+                  variant="outline"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    navigate(`/services/${service.slug}`);
+                  }}
+                >
+                  اطلاعات بیشتر
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Services;
