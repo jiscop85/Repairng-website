@@ -91,3 +91,91 @@ const serviceDetails = {
     ],
   },
 };
+
+const ServiceDetailPage = () => {
+  const { slug } = useParams();
+  const service = slug ? serviceDetails[slug as keyof typeof serviceDetails] : null;
+
+  if (!service) {
+    return (
+      <div className="min-h-screen">
+        <Header />
+        <main className="pt-24 py-20">
+          <div className="container mx-auto px-4 text-center">
+            <h1 className="text-4xl font-bold mb-4">سرویس یافت نشد</h1>
+            <p className="text-muted-foreground">متأسفانه این سرویس موجود نیست.</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen">
+      <Header />
+      <main className="pt-24">
+        {/* Hero Section */}
+        <section className="py-20 bg-gradient-primary text-white">
+          <div className="container mx-auto px-4">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+              {service.title}
+            </h1>
+            <p className="text-xl md:text-2xl max-w-3xl leading-relaxed animate-fade-in" style={{ animationDelay: "100ms" }}>
+              {service.description}
+            </p>
+          </div>
+        </section>
+
+        {/* Features Section */}
+        <section className="py-20 bg-muted/30">
+          <div className="container mx-auto px-4">
+            <Card className="max-w-4xl mx-auto">
+              <CardContent className="p-8">
+                <h2 className="text-3xl font-bold mb-8 text-center">
+                  ویژگی‌ها و خدمات
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {service.features.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-3 animate-fade-in"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <CheckCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                      <span className="text-muted-foreground leading-relaxed">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Contact CTA */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              برای دریافت مشاوره و سفارش با ما تماس بگیرید
+            </h2>
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center">
+              <Button size="lg" className="gap-2">
+                <Phone className="w-5 h-5" />
+                <a href="tel:09122448523" className="text-white">09122448523</a>
+              </Button>
+              <Button size="lg" variant="outline" className="gap-2">
+                <Phone className="w-5 h-5" />
+                <a href="tel:09912326046">09912326046</a>
+              </Button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default ServiceDetailPage;
